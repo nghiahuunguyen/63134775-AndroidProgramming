@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ListViewDemo"
+rootProject.name = "ListView Demo"
 include(":app")
- 

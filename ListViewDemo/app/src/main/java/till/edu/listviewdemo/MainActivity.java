@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         //cần biến phù hợp để chứa dữ liệu
 
         dsTenTinhThanhVN = new ArrayList<String>();//tạo thể hiện cụ thể, xin mới
-            //thêm dữ liệu ở đây(đúng ra, ta phải đọc từ một nguồn
-            //nhưng ta hard code (cho sẵn để demo)
+        //thêm dữ liệu ở đây(đúng ra, ta phải đọc từ một nguồn
+        //nhưng ta hard code (cho sẵn để demo)
         dsTenTinhThanhVN.add("Hà Nội");
         dsTenTinhThanhVN.add("Thành phố Hồ Chí Minh");
         dsTenTinhThanhVN.add("Đồng Nai");
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             //i là vị trị phần tử vừa đc click
             // là hiện lên màn hình thông báo nhanh về vị trị cửa phần tử vừa đc choc
-           // Toast.makeText(MainActivity.this,"Bạn vừa chọn"+String.valueOf(i),Toast.LENGTH_LONG).show();
+            // Toast.makeText(MainActivity.this,"Bạn vừa chọn"+String.valueOf(i),Toast.LENGTH_LONG).show();
             //vd khác thay vì hiện vị trí ta hiện giá trị
             //lấy giá trị của phần tử thứ i
             String  strTentinhchon=dsTenTinhThanhVN.get(i);
