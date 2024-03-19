@@ -9,55 +9,88 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<String> dsTenTinhThanhVN;//khai báo
+    ArrayList<String> dsTenTinhThanhVN;
+    ArrayAdapter<String> adapterTinhThanh;
+    ListView lvTenTinhThanh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //hiển thị dữ liệu trên listview
-        //b1 cần có dữ liệu
-        //?? từ đâu có từ ccsdl(sql,nosql)
-        //ở bài này dùng hardcode lấy dữ liệu trực tiếp
-        //cần biến phù hợp để chứa dữ liệu
 
-        dsTenTinhThanhVN = new ArrayList<String>();//tạo thể hiện cụ thể, xin mới
-        //thêm dữ liệu ở đây(đúng ra, ta phải đọc từ một nguồn
-        //nhưng ta hard code (cho sẵn để demo)
+        dsTenTinhThanhVN = new ArrayList<String>();
         dsTenTinhThanhVN.add("Hà Nội");
         dsTenTinhThanhVN.add("Thành phố Hồ Chí Minh");
         dsTenTinhThanhVN.add("Đồng Nai");
         dsTenTinhThanhVN.add("Ninh Thuận");
-        dsTenTinhThanhVN.add("Nhan Trang");
-        //B2 Tạo adapter
-        ArrayAdapter<String> adapterTinhThanh;
-        adapterTinhThanh = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,dsTenTinhThanhVN);
-        //b3 gắn vào đk hiện thị listview
-        //3.1 tìm
+        dsTenTinhThanhVN.add("Nha Trang");
+
+        adapterTinhThanh = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dsTenTinhThanhVN);
+
         ListView lvTenTinhThanh = findViewById(R.id.lvDanhSachTT);
-        //3.2 gắn
         lvTenTinhThanh.setAdapter(adapterTinhThanh);
-        //3.2 lắng nghe và xử lý sự kiện user tương tác
-        //gắn bộ lắng nghe vào
         lvTenTinhThanh.setOnItemClickListener(Bolangnghe);
     }
-    //tạp bộ lắng nghe và xử lý sự kiến onitemclick
-    //vd bolangnghevaxl
+
     AdapterView.OnItemClickListener Bolangnghe = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            //i là vị trị phần tử vừa đc click
-            // là hiện lên màn hình thông báo nhanh về vị trị cửa phần tử vừa đc choc
-            // Toast.makeText(MainActivity.this,"Bạn vừa chọn"+String.valueOf(i),Toast.LENGTH_LONG).show();
-            //vd khác thay vì hiện vị trí ta hiện giá trị
-            //lấy giá trị của phần tử thứ i
-            String  strTentinhchon=dsTenTinhThanhVN.get(i);
-            Toast.makeText(MainActivity.this,strTentinhchon,Toast.LENGTH_LONG).show();
+            String strTentinhchon = dsTenTinhThanhVN.get(i);
+            Toast.makeText(MainActivity.this, strTentinhchon, Toast.LENGTH_LONG).show();
         }
     };
 
+    public void them(View view) {
+        EditText tenmoi = findViewById(R.id.txtthem);
+        String tennhap = tenmoi.getText().toString();
+        dsTenTinhThanhVN.add(tennhap);
+        Collections.sort(dsTenTinhThanhVN);
+        adapterTinhThanh.notifyDataSetChanged();
+        tenmoi.setText("");
+    }
+    public void xoa(View view) {
+        EditText tenXoa = findViewById(R.id.txtthem);
+        String tenCanXoa = tenXoa.getText().toString();
+
+        int position = -1;
+        for (int i = 0; i < dsTenTinhThanhVN.size(); i++) {
+            if (dsTenTinhThanhVN.get(i).equals(tenCanXoa)) {
+                position = i;
+                break;
+            }
+        }
+
+        if (position != -1) {
+            dsTenTinhThanhVN.remove(position);
+            adapterTinhThanh.notifyDataSetChanged();
+            tenXoa.setText("");
+        } else {
+            Toast.makeText(MainActivity.this, "Không tìm thấy tên cần xóa", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void chinh(View view) {
+        EditText tenChinhSua = findViewById(R.id.txtthem);
+        String tenCanChinhSua = tenChinhSua.getText().toString();
+
+        int position = dsTenTinhThanhVN.indexOf(tenCanChinhSua);
+        if (position != -1) {
+            EditText tenmoi = findViewById(R.id.txtchinh);
+            String tenMoiValue = tenmoi.getText().toString();
+
+            dsTenTinhThanhVN.set(position, tenMoiValue);
+            adapterTinhThanh.notifyDataSetChanged();
+            tenChinhSua.setText("");
+            tenmoi.setText("");
+
+            Toast.makeText(MainActivity.this, "Đã chỉnh sửa thành công", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Không tìm thấy tên cần chỉnh sửa", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
