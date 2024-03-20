@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="71dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="52dp"
+        android:text="Số 1"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="71dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Số 2"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/edtso1"
+        android:layout_width="243dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="65dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtso2"
+        android:layout_width="241dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="39dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/edtso1" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="71dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:text="Kết quả"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/edtkq"
+        android:layout_width="249dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/edtso2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="28dp"
+        android:onClick="taodulieu"
+        android:text="Tạo dữ liệu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtkq" />
+
+    <ImageView
+        android:id="@+id/cong"
+        android:layout_width="61dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="112dp"
+        android:onClick="cong"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/cong" />
+
+    <ImageView
+        android:id="@+id/tru"
+        android:layout_width="87dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:onClick="tru"
+        app:layout_constraintStart_toEndOf="@+id/cong"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:srcCompat="@drawable/tru" />
+
+    <ImageView
+        android:id="@+id/nhan"
+        android:layout_width="114dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:onClick="nhan"
+        app:layout_constraintStart_toEndOf="@+id/tru"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:srcCompat="@drawable/nhan" />
+
+    <ImageView
+        android:id="@+id/chia"
+        android:layout_width="127dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="132dp"
+        android:onClick="chia"
+        app:layout_constraintStart_toEndOf="@+id/nhan"
+        app:layout_constraintTop_toBottomOf="@+id/edtkq"
+        app:srcCompat="@drawable/chia" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
