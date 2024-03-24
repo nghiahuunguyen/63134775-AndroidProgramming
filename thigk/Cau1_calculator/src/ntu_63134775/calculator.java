@@ -213,10 +213,6 @@ public class calculator {
 		});
 		btn_del.setBounds(177, 218, 63, 32);
 		frame.getContentPane().add(btn_del);
-		
-
-		
-		
 	}
 	void xuly() {
 		String expression = txt.getText();
@@ -235,9 +231,7 @@ public class calculator {
 	    char operator = ' ';
 	    double operand1 = 0;
 	    double operand2 = 0;
-	    
-
-	    // Tìm vị trí của phép toán (+, -, *, /, ^, sqrt)
+	    // Tìm vị trí của phép toán 
 	    if (expression.contains("+")) {
 	        operator = '+';
 	    } else if (expression.contains("-")) {
