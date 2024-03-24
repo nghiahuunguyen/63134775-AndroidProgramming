@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button nutchia = findViewById(R.id.btnchia);
         nutchia.setText("/");
         Button nutbang = findViewById(R.id.btnbang);
+        Button dell=findViewById(R.id.btndell);
+        Button c=findViewById(R.id.btnc);
+        Button mu=findViewById(R.id.btnmu);
 
         // Đặt OnClickListener cho các nút
         nut0.setOnClickListener(this);
@@ -58,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nutnhan.setOnClickListener(this);
         nutchia.setOnClickListener(this);
         nutbang.setOnClickListener(this);
+        dell.setOnClickListener(this);
+        c.setOnClickListener(this);
+        mu.setOnClickListener(this);
     }
 
     @Override
@@ -70,10 +76,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case "-":
             case "*":
             case "/":
+            case "^":
                 handleOperatorClick(buttonText);
                 break;
             case "=":
                 calculateResult();
+                break;
+            case "Dell":
+                xoatungpt();
+                break;
+            case "C":
+                xoa();
                 break;
             default:
                 String currentText = edtnhap.getText().toString();
@@ -96,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void calculateResult() {
         String currentText = edtnhap.getText().toString();
         if (!currentText.isEmpty()) {
-            String[] expression = currentText.split("\\+|-|\\*|/"); // Tách biểu thức thành các phần tử dựa trên toán tử
+            String[] expression = currentText.split("\\+|-|\\*|/|\\^"); // Tách biểu thức thành các phần tử dựa trên toán tử
+
             if (expression.length == 2) {
                 double firstOperand = Double.parseDouble(expression[0]);
                 double secondOperand = Double.parseDouble(expression[1]);
@@ -115,12 +129,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case "/":
                         if (secondOperand != 0) {
                             result = firstOperand / secondOperand;
-                        } 
+                        }
+                        break;
+                    case "^":
+                        result = Math.pow(firstOperand, secondOperand);
                         break;
                 }
-
                 edtnhap.setText(currentText + "=" + String.valueOf(result));
             }
         }
+    }
+    private void xoatungpt(){
+        String currentText = edtnhap.getText().toString();
+        int length = currentText.length();
+        if (length > 0) {
+            String newText = currentText.substring(0, length - 1);
+            edtnhap.setText(newText);
+        }
+    }
+    private void xoa(){
+        edtnhap.setText("");
     }
 }
