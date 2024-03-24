@@ -185,7 +185,7 @@ public class calculator {
 		JButton btn_bang = new JButton("=");
 		btn_bang.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				xuly();
 			}
 		});
 		btn_bang.setBounds(250, 218, 63, 32);
@@ -208,13 +208,84 @@ public class calculator {
 		JButton btn_del = new JButton("Del");
 		btn_del.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				xoa();
 			}
 		});
 		btn_del.setBounds(177, 218, 63, 32);
 		frame.getContentPane().add(btn_del);
 		
+
+		
 		
 	}
-	
+	void xuly() {
+		String expression = txt.getText();
+
+	    try {
+	        // Phân tích biểu thức và thực hiện tính toán
+	        double result = evaluateExpression(expression);
+
+	        // Đặt kết quả trở lại trường văn bản
+	        txt.setText(Double.toString(result));
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+	private double evaluateExpression(String expression) {
+	    char operator = ' ';
+	    double operand1 = 0;
+	    double operand2 = 0;
+	    
+
+	    // Tìm vị trí của phép toán (+, -, *, /, ^, sqrt)
+	    if (expression.contains("+")) {
+	        operator = '+';
+	    } else if (expression.contains("-")) {
+	        operator = '-';
+	    } else if (expression.contains("*")) {
+	        operator = '*';
+	    } else if (expression.contains("/")) {
+	        operator = '/';
+	    } else if (expression.contains("^")) {
+	        operator = '^';
+	    } 
+	    // Phân tách hai toán hạng từ biểu thức
+	    String[] operands = expression.split("\\" + operator);
+	    operand1 = Double.parseDouble(operands[0]);
+
+	    // Thực hiện tính toán dựa trên phép toán
+	    double result = 0;
+	    switch (operator) {
+	        case '+':
+	            operand2 = Double.parseDouble(operands[1]);
+	            result = operand1 + operand2;
+	            break;
+	        case '-':
+	            operand2 = Double.parseDouble(operands[1]);
+	            result = operand1 - operand2;
+	            break;
+	        case '*':
+	            operand2 = Double.parseDouble(operands[1]);
+	            result = operand1 * operand2;
+	            break;
+	        case '/':
+	            operand2 = Double.parseDouble(operands[1]);
+	            result = operand1 / operand2;
+	            break;
+	        case '^':
+	            operand2 = Double.parseDouble(operands[1]);
+	            result = Math.pow(operand1, operand2);
+	            break;
+	       
+	    }
+
+	    return result;
+	}
+	void xoa() {
+		String text = txt.getText();
+	    if (!text.isEmpty()) {
+	        text = text.substring(0, text.length() - 1);
+	        txt.setText(text);
+	    }
+	}
 }
