@@ -232,7 +232,6 @@ public class calculator {
 	        String[] operands = expression.split("\\" + operator);
 	        double operand1 = Double.parseDouble(operands[0]);
 	        double operand2 = Double.parseDouble(operands[1]);
-
 	        switch (operator) {
 	            case '+':
 	                result = operand1 + operand2;
@@ -251,13 +250,7 @@ public class calculator {
 	                break;
 	            
 	        }
-	    } else {
-	    	try {
-	            result = Double.parseDouble(expression);
-	        } catch (NumberFormatException e) {
-	            e.printStackTrace();
-	        }
-	    }
+	    } 
 
 	    txt.setText(Double.toString(result));
 	}
