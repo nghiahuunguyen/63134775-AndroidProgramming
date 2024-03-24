@@ -213,67 +213,69 @@ public class calculator {
 		});
 		btn_del.setBounds(177, 218, 63, 32);
 		frame.getContentPane().add(btn_del);
+		
+		JButton btn_xoa = new JButton("C");
+		btn_xoa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				xoatatca();
+			}
+		});
+		btn_xoa.setBounds(355, 42, 63, 32);
+		frame.getContentPane().add(btn_xoa);
 	}
 	void xuly() {
-		String expression = txt.getText();
-
-	    try {
-	        // Phân tích biểu thức và thực hiện tính toán
-	        double result = evaluateExpression(expression);
-
-	        // Đặt kết quả trở lại trường văn bản
-	        txt.setText(Double.toString(result));
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	}
-	private double evaluateExpression(String expression) {
-	    char operator = ' ';
-	    double operand1 = 0;
-	    double operand2 = 0;
-	    // Tìm vị trí của phép toán 
-	    if (expression.contains("+")) {
-	        operator = '+';
-	    } else if (expression.contains("-")) {
-	        operator = '-';
-	    } else if (expression.contains("*")) {
-	        operator = '*';
-	    } else if (expression.contains("/")) {
-	        operator = '/';
-	    } else if (expression.contains("^")) {
-	        operator = '^';
-	    } 
-	    // Phân tách hai toán hạng từ biểu thức
-	    String[] operands = expression.split("\\" + operator);
-	    operand1 = Double.parseDouble(operands[0]);
-
-	    // Thực hiện tính toán dựa trên phép toán
+	    String expression = txt.getText();
 	    double result = 0;
-	    switch (operator) {
-	        case '+':
-	            operand2 = Double.parseDouble(operands[1]);
-	            result = operand1 + operand2;
-	            break;
-	        case '-':
-	            operand2 = Double.parseDouble(operands[1]);
-	            result = operand1 - operand2;
-	            break;
-	        case '*':
-	            operand2 = Double.parseDouble(operands[1]);
-	            result = operand1 * operand2;
-	            break;
-	        case '/':
-	            operand2 = Double.parseDouble(operands[1]);
-	            result = operand1 / operand2;
-	            break;
-	        case '^':
-	            operand2 = Double.parseDouble(operands[1]);
-	            result = Math.pow(operand1, operand2);
-	            break;
-	       
+
+	    char operator = findOperator(expression);
+	    if (operator != ' ') {
+	        String[] operands = expression.split("\\" + operator);
+	        double operand1 = Double.parseDouble(operands[0]);
+	        double operand2 = Double.parseDouble(operands[1]);
+
+	        switch (operator) {
+	            case '+':
+	                result = operand1 + operand2;
+	                break;
+	            case '-':
+	                result = operand1 - operand2;
+	                break;
+	            case '*':
+	                result = operand1 * operand2;
+	                break;
+	            case '/':
+	                result = operand1 / operand2;
+	                break;
+	            case '^':
+	                result = Math.pow(operand1, operand2);
+	                break;
+	            
+	        }
+	    } else {
+	    	try {
+	            result = Double.parseDouble(expression);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
 	    }
 
-	    return result;
+	    txt.setText(Double.toString(result));
+	}
+
+	private char findOperator(String expression) {
+	    if (expression.contains("+")) {
+	        return '+';
+	    } else if (expression.contains("-")) {
+	        return '-';
+	    } else if (expression.contains("*")) {
+	        return '*';
+	    } else if (expression.contains("/")) {
+	        return '/';
+	    } else if (expression.contains("^")) {
+	        return '^';
+	    } else {
+	        return ' ';
+	    }
 	}
 	void xoa() {
 		String text = txt.getText();
@@ -281,5 +283,8 @@ public class calculator {
 	        text = text.substring(0, text.length() - 1);
 	        txt.setText(text);
 	    }
+	}
+	void xoatatca() {
+		 txt.setText("");
 	}
 }
