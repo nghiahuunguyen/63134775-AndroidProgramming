@@ -3,6 +3,7 @@ package ntu.nghia63134775;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edtnhap.setText(newText);
                 break;
         }
+
     }
 
     private void handleOperatorClick(String operator) {
@@ -87,32 +89,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!currentText.isEmpty()) {
             firstOperand = Double.parseDouble(currentText);
             selectedOperator = operator;
-            edtnhap.setText("");
+            edtnhap.setText(currentText + operator);
         }
     }
 
     private void calculateResult() {
         String currentText = edtnhap.getText().toString();
         if (!currentText.isEmpty()) {
-            double secondOperand = Double.parseDouble(currentText);
-            double result = 0.0;
+            String[] expression = currentText.split("\\+|-|\\*|/"); // Tách biểu thức thành các phần tử dựa trên toán tử
+            if (expression.length == 2) {
+                double firstOperand = Double.parseDouble(expression[0]);
+                double secondOperand = Double.parseDouble(expression[1]);
+                double result = 0.0;
 
-            switch (selectedOperator) {
-                case "+":
-                    result = firstOperand + secondOperand;
-                    break;
-                case "-":
-                    result = firstOperand - secondOperand;
-                    break;
-                case "*":
-                    result = firstOperand * secondOperand;
-                    break;
-                case "/":
-                    result = firstOperand / secondOperand;
-                    break;
+                switch (selectedOperator) {
+                    case "+":
+                        result = firstOperand + secondOperand;
+                        break;
+                    case "-":
+                        result = firstOperand - secondOperand;
+                        break;
+                    case "*":
+                        result = firstOperand * secondOperand;
+                        break;
+                    case "/":
+                        if (secondOperand != 0) {
+                            result = firstOperand / secondOperand;
+                        } 
+                        break;
+                }
+
+                edtnhap.setText(currentText + "=" + String.valueOf(result));
             }
-
-            edtnhap.setText(String.valueOf(result));
         }
     }
 }
