@@ -186,7 +186,7 @@
         android:id="@+id/btnc"
         android:layout_width="85dp"
         android:layout_height="65dp"
-        android:layout_marginStart="115dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="80dp"
         android:text="C"
         android:textSize="23dp"
@@ -201,7 +201,7 @@
         android:layout_marginTop="80dp"
         android:text="^"
         android:textSize="23dp"
-        app:layout_constraintStart_toEndOf="@+id/btnc"
+        app:layout_constraintStart_toEndOf="@+id/btncan"
         app:layout_constraintTop_toBottomOf="@+id/edtnhap" />
 
     <Button
@@ -225,4 +225,15 @@
         android:inputType="none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btncan"
+        android:layout_width="85dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="80dp"
+        android:text="√"
+        android:textSize="23dp"
+        app:layout_constraintStart_toEndOf="@+id/btnc"
+        app:layout_constraintTop_toBottomOf="@+id/edtnhap" />
 </androidx.constraintlayout.widget.ConstraintLayout>

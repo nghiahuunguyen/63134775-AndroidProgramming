@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  {
     EditText edtnhap;
-    double firstOperand;
+    double sothu1;
     String selectedOperator;
+    double sothu2;
+    boolean  isSquareRootPressed = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,112 +35,201 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button nut8 = findViewById(R.id.btn8);
         Button nut9 = findViewById(R.id.btn9);
         Button nutcong = findViewById(R.id.btncong);
-        nutcong.setText("+");
         Button nuttru = findViewById(R.id.btntru);
-        nuttru.setText("-");
         Button nutnhan = findViewById(R.id.btnnhan);
-        nutnhan.setText("*");
         Button nutchia = findViewById(R.id.btnchia);
-        nutchia.setText("/");
         Button nutbang = findViewById(R.id.btnbang);
         Button dell=findViewById(R.id.btndell);
         Button c=findViewById(R.id.btnc);
         Button mu=findViewById(R.id.btnmu);
+        Button can=findViewById(R.id.btncan);
+        Button cham=findViewById(R.id.btncham);
 
         // Đặt OnClickListener cho các nút
-        nut0.setOnClickListener(this);
-        nut1.setOnClickListener(this);
-        nut2.setOnClickListener(this);
-        nut3.setOnClickListener(this);
-        nut4.setOnClickListener(this);
-        nut5.setOnClickListener(this);
-        nut6.setOnClickListener(this);
-        nut7.setOnClickListener(this);
-        nut8.setOnClickListener(this);
-        nut9.setOnClickListener(this);
-        nutcong.setOnClickListener(this);
-        nuttru.setOnClickListener(this);
-        nutnhan.setOnClickListener(this);
-        nutchia.setOnClickListener(this);
-        nutbang.setOnClickListener(this);
-        dell.setOnClickListener(this);
-        c.setOnClickListener(this);
-        mu.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        Button clickedButton = (Button) view;
-        String buttonText = clickedButton.getText().toString();
-
-        switch (buttonText) {
-            case "+":
-            case "-":
-            case "*":
-            case "/":
-            case "^":
-                handleOperatorClick(buttonText);
-                break;
-            case "=":
-                calculateResult();
-                break;
-            case "Dell":
-                xoatungpt();
-                break;
-            case "C":
-                xoa();
-                break;
-            default:
-                String currentText = edtnhap.getText().toString();
-                String newText = currentText + buttonText;
-                edtnhap.setText(newText);
-                break;
-        }
-
-    }
-
-    private void handleOperatorClick(String operator) {
-        String currentText = edtnhap.getText().toString();
-        if (!currentText.isEmpty()) {
-            firstOperand = Double.parseDouble(currentText);
-            selectedOperator = operator;
-            edtnhap.setText(currentText + operator);
-        }
-    }
-
-    private void calculateResult() {
-        String currentText = edtnhap.getText().toString();
-        if (!currentText.isEmpty()) {
-            String[] expression = currentText.split("\\+|-|\\*|/|\\^"); // Tách biểu thức thành các phần tử dựa trên toán tử
-
-            if (expression.length == 2) {
-                double firstOperand = Double.parseDouble(expression[0]);
-                double secondOperand = Double.parseDouble(expression[1]);
-                double result = 0.0;
-
-                switch (selectedOperator) {
-                    case "+":
-                        result = firstOperand + secondOperand;
-                        break;
-                    case "-":
-                        result = firstOperand - secondOperand;
-                        break;
-                    case "*":
-                        result = firstOperand * secondOperand;
-                        break;
-                    case "/":
-                        if (secondOperand != 0) {
-                            result = firstOperand / secondOperand;
-                        }
-                        break;
-                    case "^":
-                        result = Math.pow(firstOperand, secondOperand);
-                        break;
-                }
-                edtnhap.setText(currentText + "=" + String.valueOf(result));
+        nut0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("0");
             }
-        }
+        });
+        nut1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("1");
+            }
+        });
+        nut2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("2");
+            }
+        });
+        nut3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("3");
+            }
+        });
+        nut4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("4");
+            }
+        });
+        nut5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("5");
+            }
+        });
+        nut6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("6");
+            }
+        });
+        nut7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("7");
+            }
+        });
+        nut8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("8");
+            }
+        });
+        nut9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("9");
+            }
+        });
+        cham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText(".");
+            }
+        });
+        nutcong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sothu1 = Double.parseDouble(edtnhap.getText().toString());
+                selectedOperator = "+";
+                edtnhap.setText("+");
+            }
+        });
+        nuttru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sothu1 = Double.parseDouble(edtnhap.getText().toString());
+                selectedOperator = "-";
+                edtnhap.setText("");
+            }
+        });
+
+        nutnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sothu1 = Double.parseDouble(edtnhap.getText().toString());
+                selectedOperator = "*";
+                edtnhap.setText("");
+            }
+        });
+
+        nutchia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sothu1 = Double.parseDouble(edtnhap.getText().toString());
+                selectedOperator = "/";
+                edtnhap.setText("");
+            }
+        });
+        nutbang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!edtnhap.getText().toString().isEmpty()) {
+                    String inputText = edtnhap.getText().toString();
+                    double result = 0.0;
+
+                    if (isSquareRootPressed) {
+                        String numberText = inputText.substring(1); // Lấy phần tử sau kí hiệu căn
+                        if (!numberText.isEmpty()) {
+                            double input = Double.parseDouble(numberText);
+                            result = Math.sqrt(input);
+                        }
+                        isSquareRootPressed = false;
+                    } else {
+                        switch (selectedOperator) {
+                            case "+":
+                                sothu2 = Double.parseDouble(edtnhap.getText().toString());
+                                result = sothu1 + sothu2;
+                                break;
+                            case "-":
+                                sothu2 = Double.parseDouble(edtnhap.getText().toString());
+                                result = sothu1 - sothu2;
+                                break;
+                            case "*":
+                                sothu2 = Double.parseDouble(edtnhap.getText().toString());
+                                result = sothu1 * sothu2;
+                                break;
+                            case "/":
+                                sothu2 = Double.parseDouble(edtnhap.getText().toString());
+                                if (sothu2 != 0) {
+                                    result = sothu1 / sothu2;
+                                } else {
+                                    Log.e("Error", "Division by zero");
+                                }
+                                break;
+                            case "^":
+                                sothu2 = Double.parseDouble(edtnhap.getText().toString());
+                                result = Math.pow(sothu1, sothu2);
+                                break;
+                            case "√":
+                                result = Math.sqrt(sothu1);
+                                break;
+                        }
+
+                    }
+
+                    edtnhap.setText(String.valueOf(result));
+                }
+            }
+        });
+
+        can.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtnhap.setText("√");
+                isSquareRootPressed = true;
+
+            }
+        });
+        mu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sothu1 = Double.parseDouble(edtnhap.getText().toString());
+                selectedOperator = "^";
+                edtnhap.setText("");
+            }
+        });
+
+        dell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xoatungpt();;
+            }
+        });
+        c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xoa();
+            }
+        });
     }
+
+
     private void xoatungpt(){
         String currentText = edtnhap.getText().toString();
         int length = currentText.length();
