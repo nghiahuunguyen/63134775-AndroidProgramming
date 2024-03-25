@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn0"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -18,6 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btncham"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -29,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <Button
+        android:backgroundTint="#2196F3"
         android:id="@+id/btndell"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -51,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btncong" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn1"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -62,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn4" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn2"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -73,6 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn5" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn3"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -95,6 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btntru" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn4"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -106,6 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn7" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn5"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -117,6 +125,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn8" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn6"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -139,6 +148,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnnhan" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn7"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -150,6 +160,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnc" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn8"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -161,6 +172,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnc" />
 
     <Button
+        android:backgroundTint="@color/black"
         android:id="@+id/btn9"
         android:layout_width="85dp"
         android:layout_height="65dp"
@@ -183,12 +195,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btnchia" />
 
     <Button
+        android:backgroundTint="#F60B0B"
         android:id="@+id/btnc"
         android:layout_width="85dp"
         android:layout_height="65dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="80dp"
-        android:text="C"
+        android:text="AC"
         android:textSize="23dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtnhap" />
