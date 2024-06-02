@@ -87,7 +87,7 @@ public class Cau4Fragment extends Fragment {
         //B2. Thực thi câu lệnh select
         String sqlSelect ="Select * from Books;";
         Cursor cs = db.rawQuery(sqlSelect,null);
-        cs.moveToFirst(); // đưa con trỏ bản ghi về hàng đầu tiên
+         // đưa con trỏ bản ghi về hàng đầu tiên
         // B3: Đổ vào biến nào đó để xử lý
         // 3.1. Xây dựng model/class cho bảng Books, vi dụ: Book.java
         // 3.2. Tạo biến ArrayList<Book> dsSach;
@@ -107,14 +107,13 @@ public class Cau4Fragment extends Fragment {
         }
         //B4, Hiện lên listview, recylerview,..
         // để cho nhanh, ở đây thầy chỉ hiện tên sách
-        ArrayList<String> dsTenSach = new ArrayList<String>();
-        for (int i=0; i<dsSach.size(); i++ )
-            dsTenSach.add(dsSach.get(i).getBookName());
-        View viewcau4 =inflater.inflate(R.layout.fragment_cau4, container, false);
-        ListView listView=viewcau4.findViewById(R.id.listviewcau4);
-        ArrayAdapter<String> adaptertensach=new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_list_item_1,dsTenSach);
-        listView.setAdapter(adaptertensach);
-        return  viewcau4;
+
+        View viewcau4 = inflater.inflate(R.layout.fragment_cau4, container, false);
+
+        ListView listView = viewcau4.findViewById(R.id.listviewcau4);
+        BookAdapter adapter = new BookAdapter(getContext(), dsSach); // Chỉnh sửa ở đây
+        listView.setAdapter(adapter);
+
+        return viewcau4;
     }
 }

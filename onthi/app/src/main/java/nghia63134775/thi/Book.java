@@ -1,13 +1,13 @@
 package nghia63134775.thi;
 
 public class Book {
-    int  BookID;
+    int BookID;
     String BookName;
     int Page;
     float Price;
     String Description;
 
-    public  Book(int bookID, String bookName, int page, float price, String description) {
+    public Book(int bookID, String bookName, int page, float price, String description) {
         BookID = bookID;
         BookName = bookName;
         Page = page;
