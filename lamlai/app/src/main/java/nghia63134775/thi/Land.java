@@ -1,10 +1,10 @@
-package com.example.lamlai;
+package nghia63134775.thi;
 
-public class LandSapce {
+public class Land {
     private String landImageFileName;
     private String landCaption;
 
-    public LandSapce(String landImageFileName, String landCaption) {
+    public Land(String landImageFileName, String landCaption) {
         this.landImageFileName = landImageFileName;
         this.landCaption = landCaption;
     }

@@ -42,5 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     return false;
             }
         });
+        Fragment homeFragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentSpace, homeFragment).commit();
     }
 }

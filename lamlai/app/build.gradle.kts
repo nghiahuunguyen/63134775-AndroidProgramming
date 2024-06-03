@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.lamlai"
+    namespace = "nghia63134775.thi"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.lamlai"
+        applicationId = "nghia63134775.thi"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

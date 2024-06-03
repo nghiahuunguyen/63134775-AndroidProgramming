@@ -1,4 +1,4 @@
-package com.example.lamlai;
+package nghia63134775.thi;
 
 import android.os.Bundle;
 

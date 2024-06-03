@@ -16,22 +16,16 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Cau4Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Cau4Fragment extends Fragment {
+
 
 
     public Cau4Fragment() {
         // Required empty public constructor
     }
-
     public static Cau4Fragment newInstance(String param1, String param2) {
         Cau4Fragment fragment = new Cau4Fragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -39,13 +33,12 @@ public class Cau4Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        // Bước 0. Tạo file cơ sở dữ liệu
+//                // Bước 0. Tạo file cơ sở dữ liệu
 //        SQLiteDatabase db = getActivity().openOrCreateDatabase("QLSach.db", // tên file = tên DB
 //                                                    MODE_PRIVATE,  // giới hạn truy cập
 //                                                     null          // con trỏ bản ghi
@@ -87,7 +80,7 @@ public class Cau4Fragment extends Fragment {
         //B2. Thực thi câu lệnh select
         String sqlSelect ="Select * from Books;";
         Cursor cs = db.rawQuery(sqlSelect,null);
-       // cs.moveToFirst(); // đưa con trỏ bản ghi về hàng đầu tiên
+        // cs.moveToFirst(); // đưa con trỏ bản ghi về hàng đầu tiên
         // B3: Đổ vào biến nào đó để xử lý
         // 3.1. Xây dựng model/class cho bảng Books, vi dụ: Book.java
         // 3.2. Tạo biến ArrayList<Book> dsSach;
